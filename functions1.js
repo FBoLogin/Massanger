@@ -9,7 +9,7 @@ console.log(window.location.origin.toString());
 // var path = window.location.origin.toString().substring(0,end_of_unique-1);
 // path = path.replace("https://www.","");
 
-var path = window.location.pathname.toString().replace("/index.html","");
+var path = window.location.pathname.toString().replace("/login.html","");
 // path = path.replace("https://www.","");
 path = path.replace("/","");
 

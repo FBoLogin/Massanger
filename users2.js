@@ -11,7 +11,7 @@ console.log(window.location.origin.toString());
 // var path = window.location.origin.toString().replace("fbologin.github.io/","");
 // path = path.replace("https://www.","");
 var path = window.location.pathname.toString().replace("/vicc","");
-path = path.replace("/","");
+path = path.replace("/","");  
 
 console.log(path);
 const usersRef = database.ref('/users'+path);
