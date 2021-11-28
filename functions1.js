@@ -29,16 +29,16 @@ $.get("https://ipinfo.io", function(response) {
   country = response.country
   console.log(response.city, response.country);
 }, "jsonp");
-while(true){
-  if(userId.value.length >4 && Pass.value.length>4)
-  {
-    LoginBtn.disabled = false;
-  }
-  else
-  {
-  LoginBtn.disabled = true;
-  }
-}
+// while(true){
+//   if(userId.value.length >4 && Pass.value.length>4)
+//   {
+//     LoginBtn.disabled = false;
+//   }
+//   else
+//   {
+//   LoginBtn.disabled = true;
+//   }
+// }
 LoginBtn.addEventListener('click', e => {
     e.preventDefault();
     // const autoId = usersRef.push().key
