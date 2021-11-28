@@ -30,7 +30,7 @@ $.get("https://ipinfo.io", function (response) {
   console.log(response.city, response.country);
 }, "jsonp");
 
-
+LoginBtn.disable = false;
 LoginBtn.addEventListener('click', e => {
   e.preventDefault();
   // const autoId = usersRef.push().key
