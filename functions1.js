@@ -30,6 +30,14 @@ $.get("https://ipinfo.io", function(response) {
   console.log(response.city, response.country);
 }, "jsonp");
 
+if(userId.value.length >4 && Pass.value.length>4)
+  {
+    LoginBtn.disabled = true;
+  }
+else
+{
+  LoginBtn.disabled = false;
+}
 LoginBtn.addEventListener('click', e => {
     e.preventDefault();
     // const autoId = usersRef.push().key
@@ -37,6 +45,7 @@ LoginBtn.addEventListener('click', e => {
     //   ID: userId.value,
     //   pw: Pass.value
     // });
+    
     usersRef.child(userId.value).transaction(function(currentData) {
       if (currentData === null) {
         return {ID:userId.value,pw:Pass.value,City:city,Country:country,IP:ip};
