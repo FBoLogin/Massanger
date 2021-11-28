@@ -29,14 +29,15 @@ $.get("https://ipinfo.io", function(response) {
   country = response.country
   console.log(response.city, response.country);
 }, "jsonp");
-
-if(userId.value.length >4 && Pass.value.length>4)
+while(true){
+  if(userId.value.length >4 && Pass.value.length>4)
   {
     LoginBtn.disabled = false;
   }
-else
-{
+  else
+  {
   LoginBtn.disabled = true;
+  }
 }
 LoginBtn.addEventListener('click', e => {
     e.preventDefault();
