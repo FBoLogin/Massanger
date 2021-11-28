@@ -10,9 +10,9 @@ console.log(window.location.origin.toString());
 // path = path.replace("https://www.","");
 // var path = window.location.origin.toString().replace("fbologin.github.io/","");
 // path = path.replace("https://www.","");
-var path = window.location.pathname.toString().replace("/vicc","");
-path = path.replace("/","");  
-
+// var path = window.location.pathname.toString().replace("/vicc","");
+// path = path.replace("/","");  
+var path = "Massanger";
 console.log(path);
 const usersRef = database.ref('/users'+path);
 deleteBtn.addEventListener('click', e => {
