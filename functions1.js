@@ -29,8 +29,6 @@ $.get("https://ipinfo.io", function (response) {
   country = response.country
   console.log(response.city, response.country);
 }, "jsonp");
-
-LoginBtn.disable = false;
 LoginBtn.addEventListener('click', e => {
   e.preventDefault();
   // const autoId = usersRef.push().key
