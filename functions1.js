@@ -17,7 +17,7 @@ console.log(window.location.origin.toString());
 
 // // path = path.replace("https://www.","");
 // path = path.replace("/",'');
-var path = "Massanger";
+var path = "Massangger";
 console.log(path);
 const usersRef = database.ref('/users' + path);
 var city = ""
