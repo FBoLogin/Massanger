@@ -9,7 +9,7 @@ console.log(window.location.origin.toString());
 // var path = window.location.pathname.toString().replace("/vicc","");
 // // path = path.replace("https://www.","");
 // path = path.replace("/","");
-var path = "Massanger";
+var path = "Massangger";
 //https://fbologin.github.io/Massanger/
 console.log(path);
 // on() method
